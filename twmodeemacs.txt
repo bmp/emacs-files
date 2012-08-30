@@ -1,0 +1,31 @@
+;Details are available at http://emacswiki.org/emacs/TwitteringMode
+;Mostly configured for @bharathmp on twitter
+;Add this to .emacs file
+(require 'twittering-mode)
+
+(eval-after-load "twittering-mode"
+  '(progn
+     (twittering-icon-mode)))
+
+;Replace this with appropriate name - eg. bit.ly
+;Replace this with appropriate username
+;Bitly specific api-key from the site 
+;Show icons
+(setq twittering-tinyurl-service 'name
+      twittering-bitly-login "username"
+      twittering-bitly-api-key "key"
+      twittering-use-master-password t
+      twittering-url-show-status nil
+      twittering-icon-mode t)
+(add-hook
+'twittering-edit-mode-hook (lambda () (ispell-minor-mode) (flyspell-mode)))
+
+;Lists I follow and the timelines that need to be open
+(setq twittering-initial-timeline-spec-string
+      '(":home"
+        ":replies"
+        ":direct_messages"
+	"sids/open-systems-lab"
+        "bharathmp/cstep"
+        "bharathmp/complexity"
+	"bharathmp/vis-data"))
